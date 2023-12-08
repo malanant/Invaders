@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpjsejceqxmao"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_23ssc"]
+[ext_resource type="Texture2D" uid="uid://dcls21wiftp5p" path="res://assets/player/Player-explosion1.png" id="2_pcghd"]
+[ext_resource type="Texture2D" uid="uid://dd26r5wvdqwym" path="res://assets/player/Player.png" id="2_pitap"]
+[ext_resource type="Script" path="res://scripts/shooting.gd" id="3_o82p0"]
+[ext_resource type="PackedScene" uid="uid://ds05we42duqjo" path="res://scenes/laser.tscn" id="4_pfdfs"]
+[ext_resource type="Texture2D" uid="uid://corhsxh15cdk0" path="res://assets/player/Player-explosion2.png" id="5_8j8fp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bjvd"]
+size = Vector2(40, 15.0005)
+
+[sub_resource type="Animation" id="Animation_1vfab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_pitap")]
+}
+
+[sub_resource type="Animation" id="Animation_wcith"]
+resource_name = "hit"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.5001, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_pitap"), ExtResource("2_pcghd"), ExtResource("5_8j8fp"), ExtResource("2_pcghd"), ExtResource("5_8j8fp"), ExtResource("2_pcghd"), ExtResource("2_pcghd"), ExtResource("5_8j8fp"), ExtResource("2_pcghd"), ExtResource("5_8j8fp")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqwhk"]
+_data = {
+"RESET": SubResource("Animation_1vfab"),
+"hit": SubResource("Animation_wcith")
+}
+
+[node name="player" type="Area2D"]
+script = ExtResource("1_23ssc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.894118, 0.2, 1)
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_pitap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.50025)
+shape = SubResource("RectangleShape2D_1bjvd")
+one_way_collision_margin = 0.0
+
+[node name="shooting" type="Node2D" parent="."]
+script = ExtResource("3_o82p0")
+laser_scene = ExtResource("4_pfdfs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dqwhk")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,249 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqkjg75ogf8rs"]
+
+[ext_resource type="PackedScene" uid="uid://dpjsejceqxmao" path="res://scenes/player.tscn" id="1_aj8yj"]
+[ext_resource type="PackedScene" uid="uid://gapv7fp054al" path="res://scenes/laser_trigger.tscn" id="2_pu4f4"]
+[ext_resource type="PackedScene" uid="uid://co0b4psu8eve4" path="res://scenes/invaders_spawner.tscn" id="3_5xka4"]
+[ext_resource type="FontFile" uid="uid://bgyvp4lmd3c4y" path="res://assets/fonts/thintel/Thintel.ttf" id="4_vwh2c"]
+[ext_resource type="PackedScene" uid="uid://dj12ahwugfbb1" path="res://scenes/ufo_spawner.tscn" id="5_lwcra"]
+[ext_resource type="PackedScene" uid="uid://bqjsxhsemrrav" path="res://scenes/bunker.tscn" id="6_hp2tn"]
+[ext_resource type="Script" path="res://scripts/playerLife.gd" id="7_cmjaa"]
+
+[sub_resource type="GDScript" id="GDScript_bvrt1"]
+script/source = "extends Node
+
+func _on_triggers_bas_area_entered(area):
+	if area is InvaderLaser :
+		area.queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yxy4"]
+size = Vector2(760, 18)
+
+[node name="game" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="labelScore1" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -268.0
+offset_right = -132.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "score<1>"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="scoreOne" type="Label" parent="CanvasLayer/labelScore1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_top = 32.0
+offset_right = 46.0
+offset_bottom = 74.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelHiScore" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.0
+offset_right = 68.0
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "hi-score"
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="scoreHi" type="Label" parent="CanvasLayer/LabelHiScore"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_top = 32.0
+offset_right = 36.0
+offset_bottom = 74.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "0000"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelScore2" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 130.0
+offset_right = 270.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "score<2>"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="scoreTwo" type="Label" parent="CanvasLayer/LabelScore2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 11.0
+offset_right = 36.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="life" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 2.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "3"
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="labelCredit" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -40.0
+offset_right = -55.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "CREDIT
+"
+horizontal_alignment = 2
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/labelCredit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 67.5
+offset_top = -21.0
+offset_right = 103.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_vwh2c")
+theme_override_font_sizes/font_size = 56
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="player" parent="." instance=ExtResource("1_aj8yj")]
+position = Vector2(0, 268)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="laserTrigger" parent="." instance=ExtResource("2_pu4f4")]
+position = Vector2(0, -264)
+scale = Vector2(1, 0.5)
+
+[node name="invadersSpawner" parent="." instance=ExtResource("3_5xka4")]
+position = Vector2(0, -144)
+
+[node name="invadersTriggers" type="Node" parent="."]
+script = SubResource("GDScript_bvrt1")
+
+[node name="TriggersGauche" type="Area2D" parent="invadersTriggers"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invadersTriggers/TriggersGauche"]
+position = Vector2(-376, -24)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0yxy4")
+
+[node name="TriggersDroite" type="Area2D" parent="invadersTriggers"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invadersTriggers/TriggersDroite"]
+position = Vector2(376, -16)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0yxy4")
+
+[node name="TriggersBas" type="Area2D" parent="invadersTriggers"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invadersTriggers/TriggersBas"]
+position = Vector2(-8, 288)
+shape = SubResource("RectangleShape2D_0yxy4")
+
+[node name="ufoSpawner" parent="." instance=ExtResource("5_lwcra")]
+position = Vector2(352, -240)
+
+[node name="bunker" parent="." instance=ExtResource("6_hp2tn")]
+position = Vector2(-280, 176)
+scale = Vector2(4, 3)
+
+[node name="bunker2" parent="." instance=ExtResource("6_hp2tn")]
+position = Vector2(-96, 176)
+scale = Vector2(4, 3)
+
+[node name="bunker3" parent="." instance=ExtResource("6_hp2tn")]
+position = Vector2(280, 176)
+scale = Vector2(4, 3)
+
+[node name="bunker4" parent="." instance=ExtResource("6_hp2tn")]
+position = Vector2(96, 176)
+scale = Vector2(4, 3)
+
+[node name="playerLife" type="Node" parent="."]
+script = ExtResource("7_cmjaa")
+lifes = null
+
+[connection signal="area_entered" from="invadersTriggers/TriggersGauche" to="invadersSpawner" method="_on_triggers_gauche_area_entered"]
+[connection signal="area_entered" from="invadersTriggers/TriggersDroite" to="invadersSpawner" method="_on_triggers_droite_area_entered"]
+[connection signal="area_entered" from="invadersTriggers/TriggersBas" to="invadersTriggers" method="_on_triggers_bas_area_entered"]

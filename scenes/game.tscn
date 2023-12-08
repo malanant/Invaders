@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqkjg75ogf8rs"]
+
+[ext_resource type="PackedScene" uid="uid://dpjsejceqxmao" path="res://scenes/player.tscn" id="1_aj8yj"]
+[ext_resource type="PackedScene" uid="uid://gapv7fp054al" path="res://scenes/laser_trigger.tscn" id="2_pu4f4"]
+[ext_resource type="PackedScene" uid="uid://co0b4psu8eve4" path="res://scenes/invaders_spawner.tscn" id="3_5xka4"]
+[ext_resource type="PackedScene" uid="uid://dj12ahwugfbb1" path="res://scenes/ufo_spawner.tscn" id="5_lwcra"]
+[ext_resource type="PackedScene" uid="uid://bqjsxhsemrrav" path="res://scenes/bunker.tscn" id="6_hp2tn"]
+[ext_resource type="Script" path="res://scripts/playerLife.gd" id="7_cmjaa"]
+[ext_resource type="Script" path="res://scripts/pointCounter.gd" id="8_4obmy"]
+[ext_resource type="PackedScene" uid="uid://dp6c18dnlffg5" path="res://scenes/Canvas.tscn" id="8_glrqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yxy4"]
+size = Vector2(748, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhrmo"]
+size = Vector2(720, 20)
+
+[node name="game" type="Node"]
+
+[node name="player" parent="." instance=ExtResource("1_aj8yj")]
+position = Vector2(0, 268)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="laserTrigger" parent="." instance=ExtResource("2_pu4f4")]
+position = Vector2(0, -264)
+scale = Vector2(1, 0.5)
+
+[node name="invadersSpawner" parent="." instance=ExtResource("3_5xka4")]
+position = Vector2(0, -144)
+
+[node name="invadersTriggers" type="Node" parent="."]
+
+[node name="TriggersGauche" type="Area2D" parent="invadersTriggers"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invadersTriggers/TriggersGauche"]
+position = Vector2(-376, -24)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0yxy4")
+
+[node name="TriggersDroite" type="Area2D" parent="invadersTriggers"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invadersTriggers/TriggersDroite"]
+position = Vector2(376, -16)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0yxy4")
+
+[node name="TriggersBas" type="Area2D" parent="invadersTriggers"]
+collision_layer = 40
+collision_mask = 12
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="invadersTriggers/TriggersBas"]
+position = Vector2(8, 296)
+shape = SubResource("RectangleShape2D_qhrmo")
+
+[node name="ufoSpawner" parent="." instance=ExtResource("5_lwcra")]
+position = Vector2(352, -240)
+
+[node name="bunker" parent="." instance=ExtResource("6_hp2tn")]
+position = Vector2(-280, 176)
+scale = Vector2(4, 3)
+
+[node name="bunker2" parent="." instance=ExtResource("6_hp2tn")]
+position = Vector2(-96, 176)
+scale = Vector2(4, 3)
+
+[node name="bunker3" parent="." instance=ExtResource("6_hp2tn")]
+position = Vector2(280, 176)
+scale = Vector2(4, 3)
+
+[node name="bunker4" parent="." instance=ExtResource("6_hp2tn")]
+position = Vector2(96, 176)
+scale = Vector2(4, 3)
+
+[node name="playerLife" type="Node" parent="."]
+script = ExtResource("7_cmjaa")
+
+[node name="pointCounter" type="Node" parent="."]
+script = ExtResource("8_4obmy")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("8_glrqr")]
+
+[connection signal="area_entered" from="invadersTriggers/TriggersGauche" to="invadersSpawner" method="_on_triggers_gauche_area_entered"]
+[connection signal="area_entered" from="invadersTriggers/TriggersDroite" to="invadersSpawner" method="_on_triggers_droite_area_entered"]
+[connection signal="area_entered" from="invadersTriggers/TriggersBas" to="invadersSpawner" method="_on_triggers_bas_area_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://csccb42pwo30l"]
+
+[ext_resource type="Script" path="res://scripts/invaders_lasers.gd" id="1_v0f3m"]
+[ext_resource type="Texture2D" uid="uid://cchq0jv4tafxe" path="res://assets/lasers/Rocket.png" id="2_b8ie5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlldi"]
+size = Vector2(3, 6)
+
+[node name="invaders_lasers" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 8
+script = ExtResource("1_v0f3m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_b8ie5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dlldi")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

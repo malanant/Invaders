@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://gapv7fp054al"]
+
+[ext_resource type="Script" path="res://scripts/laser_trigger.gd" id="1_cufus"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1m3f"]
+size = Vector2(769, 20)
+
+[node name="laserTrigger" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_cufus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y1m3f")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="global_invaders_config" load_steps=4 format=3 uid="uid://8uphoasppv5l"]
+
+[ext_resource type="Script" path="res://modules/global_invaders_script.gd" id="1_rqwdy"]
+[ext_resource type="Texture2D" uid="uid://badrkj8u8sc5o" path="res://assets/invaders/Invader3-1.png" id="2_nvacn"]
+[ext_resource type="Texture2D" uid="uid://caar2rt7kmxdh" path="res://assets/invaders/Invader3-2.png" id="3_kal4d"]
+
+[resource]
+script = ExtResource("1_rqwdy")
+sprite_1 = ExtResource("2_nvacn")
+sprite_2 = ExtResource("3_kal4d")
+width = 18
+animation_name = "invader3"
+points = 10

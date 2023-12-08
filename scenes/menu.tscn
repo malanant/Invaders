@@ -1,0 +1,221 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvibn5ek5q4xf"]
+
+[ext_resource type="FontFile" uid="uid://bgyvp4lmd3c4y" path="res://assets/fonts/thintel/Thintel.ttf" id="1_rsu4g"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_yho5e"]
+[ext_resource type="Texture2D" uid="uid://badrkj8u8sc5o" path="res://assets/invaders/Invader3-1.png" id="2_3hlqx"]
+[ext_resource type="Texture2D" uid="uid://crew67ictu2al" path="res://assets/invaders/Invader1-1.png" id="3_84kw7"]
+[ext_resource type="Texture2D" uid="uid://ckywmoptmu6dp" path="res://assets/invaders/Invader2-2.png" id="4_n7tmq"]
+[ext_resource type="Texture2D" uid="uid://discceno7wvkj" path="res://assets/boss/boss-white.png" id="5_0ykcy"]
+
+[node name="start_screen" type="CanvasLayer"]
+script = ExtResource("1_yho5e")
+
+[node name="playerOne" type="Label" parent="."]
+offset_right = 314.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "score<1>"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="scoreOne" type="Label" parent="playerOne"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 14.0
+offset_right = 36.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "0000"
+horizontal_alignment = 1
+
+[node name="labelHiScore" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_right = 76.0
+offset_bottom = 47.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "hi-score"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="hiScore" type="Label" parent="labelHiScore"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 11.5
+offset_right = 40.0
+offset_bottom = 58.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "0000"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="playerTwo" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -312.0
+offset_bottom = 47.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "score<2>"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="ScoreTwo" type="Label" parent="playerTwo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 11.5
+offset_right = 40.0
+offset_bottom = 58.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "0000"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelSpaceInvaders" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.5
+offset_top = -168.0
+offset_right = 179.5
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "
+space      invaders
+
+*score advanced table*
+=? mystery
+=30 points
+=20 points
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextureRect3" type="TextureRect" parent="Control/LabelSpaceInvaders"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 45.5
+offset_top = 251.0
+offset_right = 77.5
+offset_bottom = 283.0
+texture = ExtResource("2_3hlqx")
+
+[node name="LabelAlien" type="Label" parent="Control/LabelSpaceInvaders"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.5
+offset_top = -42.0
+offset_right = 84.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0.839216, 0, 1)
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "=10 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/LabelSpaceInvaders"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 47.5
+offset_top = 206.0
+offset_right = 79.5
+offset_bottom = 238.0
+texture = ExtResource("3_84kw7")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/LabelSpaceInvaders"]
+modulate = Color(0, 0.855469, 0, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 46.5
+offset_top = 293.0
+offset_right = 78.5
+offset_bottom = 325.0
+texture = ExtResource("4_n7tmq")
+
+[node name="TextureRect4" type="TextureRect" parent="Control/LabelSpaceInvaders"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 25.5
+offset_top = 169.0
+offset_right = 89.5
+offset_bottom = 201.0
+texture = ExtResource("5_0ykcy")
+
+[node name="labelPlay" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -173.0
+offset_right = 44.0
+offset_bottom = -131.0
+theme_override_fonts/font = ExtResource("1_rsu4g")
+theme_override_font_sizes/font_size = 56
+text = "play"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="child_order_changed" from="playerOne/scoreOne" to="." method="_on_score_one_child_order_changed"]

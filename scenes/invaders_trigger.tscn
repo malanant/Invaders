@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bfdamyj78eyvm"]
+
+[node name="invadersTrigger" type="Area2D"]

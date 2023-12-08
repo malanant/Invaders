@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=3 uid="uid://bqjsxhsemrrav"]
+
+[ext_resource type="Texture2D" uid="uid://dixxp0o6gmuji" path="res://assets/bunkers/3.png" id="1_l6psa"]
+[ext_resource type="Script" path="res://scripts/bunker/bunker.gd" id="1_sliom"]
+[ext_resource type="Texture2D" uid="uid://dfvnp0eh5dnm0" path="res://assets/bunkers/3leftcorner.png" id="2_0e8lk"]
+[ext_resource type="Texture2D" uid="uid://ykx4mmxh1csx" path="res://assets/bunkers/2middle.png" id="2_cd14i"]
+[ext_resource type="Texture2D" uid="uid://cs3ich0hgqow8" path="res://assets/bunkers/1middle.png" id="3_bsqkp"]
+[ext_resource type="Texture2D" uid="uid://lkqmyc1l0ctg" path="res://assets/bunkers/3rightcorner.png" id="3_txboi"]
+[ext_resource type="Texture2D" uid="uid://dft5l2nvi55o6" path="res://assets/bunkers/2leftcorner.png" id="6_kwunr"]
+[ext_resource type="Texture2D" uid="uid://bi5hwf636im8w" path="res://assets/bunkers/1leftcorner.png" id="7_6hj5f"]
+[ext_resource type="Texture2D" uid="uid://dcv5ahg25s7lv" path="res://assets/bunkers/1rightcorner.png" id="10_q1xo3"]
+[ext_resource type="Texture2D" uid="uid://i2bxuat2vt6l" path="res://assets/bunkers/2rightcorner.png" id="11_m6yfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq7fh"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qld1"]
+size = Vector2(7, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpux3"]
+size = Vector2(7, 7)
+
+[node name="bunker" type="Node2D"]
+
+[node name="top" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_sliom")
+sprite = NodePath("topSprite")
+texture_array = Array[Texture2D]([ExtResource("2_cd14i"), ExtResource("3_bsqkp")])
+
+[node name="topSprite" type="Sprite2D" parent="top"]
+texture_filter = 1
+texture = ExtResource("1_l6psa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top"]
+shape = SubResource("RectangleShape2D_hq7fh")
+
+[node name="left" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_sliom")
+sprite = NodePath("leftSprite2D")
+texture_array = Array[Texture2D]([ExtResource("6_kwunr"), ExtResource("7_6hj5f")])
+
+[node name="leftSprite2D" type="Sprite2D" parent="left"]
+texture_filter = 1
+position = Vector2(-8, 0)
+texture = ExtResource("2_0e8lk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+position = Vector2(-7.5, 0.5)
+shape = SubResource("RectangleShape2D_8qld1")
+
+[node name="right" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_sliom")
+sprite = NodePath("rightSprite2D")
+texture_array = Array[Texture2D]([ExtResource("11_m6yfi"), ExtResource("10_q1xo3")])
+
+[node name="rightSprite2D" type="Sprite2D" parent="right"]
+texture_filter = 1
+position = Vector2(8, 0)
+texture = ExtResource("3_txboi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+position = Vector2(7.5, 0.5)
+shape = SubResource("RectangleShape2D_qpux3")
+
+[node name="midle" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_sliom")
+sprite = NodePath("midleSprite")
+texture_array = Array[Texture2D]([ExtResource("2_cd14i"), ExtResource("3_bsqkp")])
+
+[node name="midleSprite" type="Sprite2D" parent="midle"]
+texture_filter = 1
+position = Vector2(0, 8)
+texture = ExtResource("1_l6psa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="midle"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_hq7fh")
+
+[node name="midleRight" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_sliom")
+sprite = NodePath("../midle/midleSprite")
+texture_array = Array[Texture2D]([ExtResource("3_bsqkp"), ExtResource("2_cd14i")])
+
+[node name="midleRight" type="Sprite2D" parent="midleRight"]
+texture_filter = 1
+position = Vector2(8, 8)
+texture = ExtResource("1_l6psa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="midleRight"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_hq7fh")
+
+[node name="midleLeft" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_sliom")
+sprite = NodePath("block")
+texture_array = Array[Texture2D]([ExtResource("2_cd14i"), ExtResource("3_bsqkp")])
+
+[node name="block" type="Sprite2D" parent="midleLeft"]
+texture_filter = 1
+position = Vector2(-8, 8)
+texture = ExtResource("1_l6psa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="midleLeft"]
+position = Vector2(-8, 8)
+shape = SubResource("RectangleShape2D_hq7fh")
+
+[node name="bottomRight" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_sliom")
+sprite = NodePath("block")
+texture_array = Array[Texture2D]([ExtResource("2_cd14i"), ExtResource("3_bsqkp")])
+
+[node name="block" type="Sprite2D" parent="bottomRight"]
+texture_filter = 1
+position = Vector2(8, 16)
+texture = ExtResource("1_l6psa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomRight"]
+position = Vector2(8, 16)
+shape = SubResource("RectangleShape2D_hq7fh")
+
+[node name="bottomLeft" type="Area2D" parent="." node_paths=PackedStringArray("sprite")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_sliom")
+sprite = NodePath("block")
+texture_array = Array[Texture2D]([ExtResource("2_cd14i"), ExtResource("3_bsqkp")])
+
+[node name="block" type="Sprite2D" parent="bottomLeft"]
+texture_filter = 1
+position = Vector2(-8, 16)
+texture = ExtResource("1_l6psa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomLeft"]
+position = Vector2(-8, 16)
+shape = SubResource("RectangleShape2D_hq7fh")
+
+[connection signal="area_entered" from="top" to="top" method="_on_area_entered"]
