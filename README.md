@@ -2,7 +2,7 @@
 
 ## Comment lancer le jeu : 
 
-Il vous faut aller sur le lien https://qcrelced.itch.io/spaceinvaders puis clique sur “Run game” et le jeu se lancera. Aucun compte n'est requis pour jouer. 
+Il vous faut aller sur le lien https://qcrelced.itch.io/spaceinvaders puis cliquer sur “Run game” et le jeu se lancera. Aucun compte n'est requis pour jouer. 
 
 ### Objectif du jeu : 
 
