@@ -47,7 +47,7 @@ func _on_area_entered(area):
 		queue_free()
 ```
 
-## Fonction qui permet de faire bouger les ennemis
+## Fonction qui permet de faire bouger les ennemis et les accélérer
 ```
 func movement_invaders():
 	if	invader_destroyed_count > 15:
