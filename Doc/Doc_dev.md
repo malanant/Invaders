@@ -40,8 +40,8 @@ func _on_area_entered(area):
 	if damage < type and type  > 0:
 		damage += 1
 		sprite.texture = texture_array[damage - 1]
-```
 	else:
 		queue_free()	
 	if area is Invader:
 		queue_free()
+```
