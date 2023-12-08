@@ -26,9 +26,11 @@ Itch.io : Hébergement du jeu
 		direction = Vector2.ZERO
 	if(position.x + movement < collision_left + collision_size * transform.get_scale().x or position.x + movement > collision_right - collision_size * transform.get_scale().x):
 		return
-	position.x += movement #La position du joueur est mise à jour```
+	position.x += movement #La position du joueur est mise à jour
+```
 
 ## Fonction dégats du mur :
+```
 func _on_area_entered(area):
 	if area is Laser :
 		area.queue_free()
@@ -38,6 +40,7 @@ func _on_area_entered(area):
 	if damage < type and type  > 0:
 		damage += 1
 		sprite.texture = texture_array[damage - 1]
+```
 	else:
 		queue_free()	
 	if area is Invader:
