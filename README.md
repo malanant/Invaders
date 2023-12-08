@@ -23,3 +23,5 @@ Le joueur possède 3 vies au total.
 Les ennemis commencent en haut de l’espace de jeu et se déplacent de gauche à droite, dès qu’ils touchent la bordure du jeu ils changeront de direction et descendront d’un étage jusqu’à ce qu’ils arrivent sur le joueur. 
 
 Au fur et à mesure que leur nombre diminue, ils accélèreront toujours dans la même logique.
+
+Un boss apprait de manière aléatoire en haut de la zone de jeu.
