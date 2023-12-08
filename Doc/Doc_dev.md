@@ -13,8 +13,9 @@ Itch.io : Hébergement du jeu
 
 # Les fonctions principales :  
 
-## Fonctions des mouvements
-```func _process(delta):
+## Fonctions delta (mouvement)
+```
+func _process(delta):
 	var input = Input.get_axis("left", "right") #Les contrôles sont déterminé dans les paramètres du projet
 	var movement = speed * direction.x * delta #Détermine la vitesse du joueur en fonction du framerates
 	#Détermine la direction en fonction de la touche pressé sur le clavier
